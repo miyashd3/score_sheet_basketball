@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  text-align: center;
+}
+
+.total-score {
+  display:flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.away-count, .home-count {
+  font-size: xx-large;
+  border: solid 3px;
+  margin: 20px auto;
+}
+
+.countup {
+  padding: 10px 20px;
+  font-size: large;
+}
