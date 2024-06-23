@@ -19,3 +19,16 @@ body {
   padding: 10px 20px;
   font-size: large;
 }
+
+.score-log {
+  display: flex;
+  justify-content: space-around; /* ログを左右に均等に配置 */
+}
+
+.score-log-section {
+  width: 45%; /* 各ログの幅を設定 */
+  border: 1px solid #ccc; /* ログの境界を明確にする */
+  padding: 10px;
+  overflow-y: auto; /* 必要に応じてスクロールバーを表示 */
+  height: 200px; /* ログの高さを設定 */
+}
