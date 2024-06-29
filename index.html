@@ -7,37 +7,94 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>score</h1>
+  <div class="sidebar left-sidebar">
+    <h2>Away Team</h2>
+    <ul>
+      <li>プレイヤー1 - 4: <span class="score" id="away-player-4-score">0</span></li>
+      <li>プレイヤー2 - 5: <span class="score" id="away-player-5-score">0</span></li>
+      <li>プレイヤー3 - 6: <span class="score" id="away-player-6-score">0</span></li>
+      <li>プレイヤー4 - 7: <span class="score" id="away-player-7-score">0</span></li>
+      <li>プレイヤー5 - 8: <span class="score" id="away-player-8-score">0</span></li>
+    </ul>
+  </div>
 
-  <div class="total-score">
-    <div class="away">
-      <h2>Away</h2>
-      <div class="away-count">
-        0
+  <div class="main-content">
+    <h1>score</h1>
+
+    <div class="total-score">
+      <div class="away">
+        <h2>Away</h2>
+        <div class="away-count">
+          0
+        </div>
+        <div class="countup-button">
+          <button class="countup" type="button">+1</button>
+          <button class="countup" type="button">+2</button>
+          <button class="countup" type="button">+3</button>
+        </div>
+        <div class="away-players">
+          <input type="radio" name="away-player" id="away-player-4" value="4">
+          <label for="away-player-4">4</label>
+          
+          <input type="radio" name="away-player" id="away-player-5" value="5">
+          <label for="away-player-5">5</label>
+          
+          <input type="radio" name="away-player" id="away-player-6" value="6">
+          <label for="away-player-6">6</label>
+          
+          <input type="radio" name="away-player" id="away-player-7" value="7">
+          <label for="away-player-7">7</label>
+          
+          <input type="radio" name="away-player" id="away-player-8" value="8">
+          <label for="away-player-8">8</label>
+        </div>
       </div>
-      <div class="countup-button">
-        <button class="countup" type="button">+1</button>
-        <button class="countup" type="button">+2</button>
-        <button class="countup" type="button">+3</button>
+    
+      <div class="home">
+        <h2>Home</h2>
+        <div class="home-count">
+          0
+        </div>
+        <div class="countup-button">
+          <button class="countup" type="button">+1</button>
+          <button class="countup" type="button">+2</button>
+          <button class="countup" type="button">+3</button>
+        </div>
+        <div class="home-players">
+          <input type="radio" name="home-player" id="home-player-4" value="4">
+          <label for="home-player-4">4</label>
+          
+          <input type="radio" name="home-player" id="home-player-5" value="5">
+          <label for="home-player-5">5</label>
+          
+          <input type="radio" name="home-player" id="home-player-6" value="6">
+          <label for="home-player-6">6</label>
+          
+          <input type="radio" name="home-player" id="home-player-7" value="7">
+          <label for="home-player-7">7</label>
+          
+          <input type="radio" name="home-player" id="home-player-8" value="8">
+          <label for="home-player-8">8</label>
+        </div>
       </div>
     </div>
-    
-    <div class="home">
-      <h2>Home</h2>
-      <div class="home-count">
-        0
-      </div>
-      <div class="countup-button">
-        <button class="countup" type="button">+1</button>
-        <button class="countup" type="button">+2</button>
-        <button class="countup" type="button">+3</button>
-      </div>
+  
+    <div class="score-log">
+      <div class="away-score-log score-log-section"></div>
+      <div class="home-score-log score-log-section"></div>
     </div>
   </div>
   
-  <div class="score-log">
-    <div class="away-score-log score-log-section"></div>
-    <div class="home-score-log score-log-section"></div>
+
+  <div class="sidebar right-sidebar">
+    <h2>Home Team</h2>
+    <ul>
+      <li>プレイヤー1 - 4: <span class="score" id="home-player-4-score">0</span></li>
+      <li>プレイヤー2 - 5: <span class="score" id="home-player-5-score">0</span></li>
+      <li>プレイヤー3 - 6: <span class="score" id="home-player-6-score">0</span></li>
+      <li>プレイヤー4 - 7: <span class="score" id="home-player-7-score">0</span></li>
+      <li>プレイヤー5 - 8: <span class="score" id="home-player-8-score">0</span></li>
+    </ul>
   </div>
 
   <script src="countup.js"></script>

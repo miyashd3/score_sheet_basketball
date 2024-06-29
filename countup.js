@@ -1,35 +1,41 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Awayチームの要素を取得
   const awayButtons = document.querySelectorAll('.away .countup');
   const awayScoreDisplay = document.querySelector('.away .away-count');
   const awayLog = document.querySelector('.away-score-log');
+  const awayPlayers = document.getElementsByName('away-player');
 
-  // Homeチームの要素を取得
   const homeButtons = document.querySelectorAll('.home .countup');
   const homeScoreDisplay = document.querySelector('.home .home-count');
   const homeLog = document.querySelector('.home-score-log');
+  const homePlayers = document.getElementsByName('home-player');
 
-  // スコアを更新し、ログに記録する関数
-  function updateScore(scoreDisplay, logDisplay, points) {
-    let currentScore = parseInt(scoreDisplay.textContent);
-    scoreDisplay.textContent = currentScore + points;
-    // ログに追加
-    logDisplay.innerHTML += `<div>${points}点追加: ${currentScore + points}</div><hr>`;
+  function updatePlayerScore(team, playerId, points) {
+    const playerScoreDisplay = document.getElementById(`${team}-player-${playerId}-score`);
+    let currentScore = parseInt(playerScoreDisplay.textContent);
+    playerScoreDisplay.textContent = currentScore + points;
   }
 
-  // Awayチームのボタンにイベントリスナーを設定
+  function updateScore(team, scoreDisplay, logDisplay, players, points) {
+    const selectedPlayer = Array.from(players).find(player => player.checked);
+    if (selectedPlayer) {
+      let currentScore = parseInt(scoreDisplay.textContent);
+      scoreDisplay.textContent = currentScore + points;
+      updatePlayerScore(team, selectedPlayer.value, points);
+      logDisplay.innerHTML += `<div>プレイヤー${selectedPlayer.value}: ${points}点追加, 合計 ${currentScore + points}点</div><hr>`;
+    }
+  }
+
   awayButtons.forEach(button => {
     button.addEventListener('click', function() {
       const points = parseInt(this.textContent);
-      updateScore(awayScoreDisplay, awayLog, points);
+      updateScore('away', awayScoreDisplay, awayLog, awayPlayers, points);
     });
   });
 
-  // Homeチームのボタンにイベントリスナーを設定
   homeButtons.forEach(button => {
     button.addEventListener('click', function() {
       const points = parseInt(this.textContent);
-      updateScore(homeScoreDisplay, homeLog, points);
+      updateScore('home', homeScoreDisplay, homeLog, homePlayers, points);
     });
   });
 });
