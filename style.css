@@ -1,4 +1,6 @@
 body {
+  display: flex;
+  min-height: 100vh;
   margin: 0;
   text-align: center;
 }
@@ -30,5 +32,65 @@ body {
   border: 1px solid #ccc; /* ログの境界を明確にする */
   padding: 10px;
   overflow-y: auto; /* 必要に応じてスクロールバーを表示 */
-  height: 200px; /* ログの高さを設定 */
+  height: 500px; /* ログの高さを設定 */
+}
+
+/* ラジオボタンのカスタムスタイル */
+input[type="radio"] {
+  appearance: none; /* デフォルトのスタイルを削除 */
+  width: 20px; /* より大きなタッチエリアを提供 */
+  height: 20px; /* より大きなタッチエリアを提供 */
+  border: 2px solid #555; /* カスタムボーダー */
+  border-radius: 50%; /* 円形にする */
+  margin-right: 8px; /* ラベルとの間隔 */
+  vertical-align: middle; /* ラベルとの垂直位置を揃える */
+}
+
+input[type="radio"]:checked {
+  background-color: #007BFF; /* 選択時の背景色 */
+  border-color: #0056b3; /* 選択時のボーダーカラー */
+}
+
+/* ラベルのスタイル */
+label {
+  cursor: pointer; /* ホバー時にカーソルをポインターに変更 */
+  padding: 5px; /* クリックしやすくするためのパディング */
+  display: inline-block; /* ブロック要素として表示 */
+}
+
+/* ラジオボタンとラベルのコンテナ */
+.away-players, .home-players {
+  padding: 10px;
+  border: 1px solid #ccc; /* コンテナの境界線 */
+  margin-bottom: 10px; /* 下部のマージン */
+}
+
+.sidebar {
+  width: 20%; /* サイドバーの幅 */
+  background-color: #f4f4f4; /* 背景色 */
+  padding: 20px; /* パディング */
+  box-sizing: border-box; /* ボックスサイズの計算方法 */
+}
+
+.left-sidebar {
+  order: 1; /* 左側に配置 */
+}
+
+.main-content {
+  flex-grow: 1; /* 残りのスペースを埋める */
+  order: 2; /* 中央に配置 */
+  padding: 20px; /* パディング */
+}
+
+.right-sidebar {
+  order: 3; /* 右側に配置 */
+}
+
+ul {
+  list-style: none; /* リストスタイルをなしに */
+  padding: 0; /* パディングを0に */
+}
+
+li {
+  margin-bottom: 10px; /* リストアイテム間のマージン */
 }
