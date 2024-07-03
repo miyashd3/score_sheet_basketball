@@ -7,96 +7,113 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Away チームのプレイヤーリスト -->
   <div class="sidebar left-sidebar">
     <h2>Away Team</h2>
-    <ul>
-      <li>プレイヤー1 - 4: <span class="score" id="away-player-4-score">0</span></li>
-      <li>プレイヤー2 - 5: <span class="score" id="away-player-5-score">0</span></li>
-      <li>プレイヤー3 - 6: <span class="score" id="away-player-6-score">0</span></li>
-      <li>プレイヤー4 - 7: <span class="score" id="away-player-7-score">0</span></li>
-      <li>プレイヤー5 - 8: <span class="score" id="away-player-8-score">0</span></li>
+    <ul id="away-player-list">
+      <li id="away-player-1">
+        Away Player 1: <span class="score">0</span>
+        <button class="delete-btn" id="away-player-1">削除</button>
+      </li>
+      <li id="away-player-2">
+        Away Player 2: <span class="score">0</span>
+        <button class="delete-btn" id="away-player-2">削除</button>
+      </li>
+      <li id="away-player-3">
+        Away Player 3: <span class="score">0</span>
+        <button class="delete-btn" id="away-player-3">削除</button>
+      </li>
     </ul>
+    <!-- Away チームのプレイヤー追加フォーム -->
+    <div class="player-form away-form">
+      <h3>Away チーム プレイヤー追加</h3>
+      <form id="awayPlayerForm">
+        <input type="text" id="awayPlayerName" placeholder="プレイヤー名" required>
+        <input type="number" id="awayPlayerNumber" placeholder="番号" required>
+        <button type="submit">追加</button>
+      </form>
+    </div>
   </div>
 
-  <div class="main-content">
-    <h1>score</h1>
+  <!-- Home チームのプレイヤーリスト -->
+  <div class="sidebar right-sidebar">
+    <h2>Home Team</h2>
+    <ul id="home-player-list">
+      <li id="home-player-1">
+        Home Player 1: <span class="score">0</span>
+        <button class="delete-btn" id="home-player-1">削除</button>
+      </li>
+      <li id="home-player-2">
+        Home Player 2: <span class="score">0</span>
+        <button class="delete-btn" id="home-player-2">削除</button>
+      </li>
+      <li id="home-player-3">
+        Home Player 3: <span class="score">0</span>
+        <button class="delete-btn" id="home-player-3">削除</button>
+      </li>
+    </ul>
+    <!-- Home チームのプレイヤー追加フォーム -->
+    <div class="player-form home-form">
+      <h3>Home チーム プレイヤー追加</h3>
+      <form id="homePlayerForm">
+        <input type="text" id="homePlayerName" placeholder="プレイヤー名" required>
+        <input type="number" id="homePlayerNumber" placeholder="番号" required>
+        <button type="submit">追加</button>
+      </form>
+    </div>
+  </div>
+    
 
-    <div class="total-score">
-      <div class="away">
-        <h2>Away</h2>
-        <div class="away-count">
-          0
-        </div>
-        <div class="countup-button">
-          <button class="countup" type="button">+1</button>
-          <button class="countup" type="button">+2</button>
-          <button class="countup" type="button">+3</button>
-        </div>
+  <div class="main-content">
+    <h1>Scoreboard</h1>
+    <div class="team-selection">
+      <div class="away-scoreboard">
+        <h2>Away Team</h2>
+        <div class="away-total">0</div>
         <div class="away-players">
-          <input type="radio" name="away-player" id="away-player-4" value="4">
-          <label for="away-player-4">4</label>
-          
-          <input type="radio" name="away-player" id="away-player-5" value="5">
-          <label for="away-player-5">5</label>
-          
-          <input type="radio" name="away-player" id="away-player-6" value="6">
-          <label for="away-player-6">6</label>
-          
-          <input type="radio" name="away-player" id="away-player-7" value="7">
-          <label for="away-player-7">7</label>
-          
-          <input type="radio" name="away-player" id="away-player-8" value="8">
-          <label for="away-player-8">8</label>
+          <input type="radio" name="away-player" id="away-player-1" value="">
+          <label for="away-player-1">Away Player 1</label>
+          <input type="radio" name="away-player" id="away-player-2" value="">
+          <label for="away-player-2">Away Player 2</label>
+          <input type="radio" name="away-player" id="away-player-3" value="">
+          <label for="away-player-3">Away Player 3</label>
+          <!-- Away team players' radio buttons will be inserted here -->
+        </div>
+        <div class="away-score-countup">
+          <button id="away-score-1">+1 Point</button>
+          <button id="away-score-2">+2 Points</button>
+          <button id="away-score-3">+3 Points</button>
         </div>
       </div>
-    
-      <div class="home">
-        <h2>Home</h2>
-        <div class="home-count">
-          0
-        </div>
-        <div class="countup-button">
-          <button class="countup" type="button">+1</button>
-          <button class="countup" type="button">+2</button>
-          <button class="countup" type="button">+3</button>
-        </div>
+
+      <div class="home-scoreboard">
+        <h2>Home Team</h2>
+        <div class="home-total">0</div>
         <div class="home-players">
-          <input type="radio" name="home-player" id="home-player-4" value="4">
-          <label for="home-player-4">4</label>
-          
-          <input type="radio" name="home-player" id="home-player-5" value="5">
-          <label for="home-player-5">5</label>
-          
-          <input type="radio" name="home-player" id="home-player-6" value="6">
-          <label for="home-player-6">6</label>
-          
-          <input type="radio" name="home-player" id="home-player-7" value="7">
-          <label for="home-player-7">7</label>
-          
-          <input type="radio" name="home-player" id="home-player-8" value="8">
-          <label for="home-player-8">8</label>
+          <input type="radio" name="home-player" id="home-player-1" value="">
+          <label for="home-player-1">Home Player 1</label>
+          <input type="radio" name="home-player" id="home-player-2" value="">
+          <label for="home-player-2">Home Player 2</label>
+          <input type="radio" name="home-player" id="home-player-3" value="">
+          <label for="home-player-3">Home Player 3</label>
+          <!-- Home team players' radio buttons will be inserted here -->
+        </div>
+        <div class="home-score-countup">
+          <button id="home-score-1">+1 Point</button>
+          <button id="home-score-2">+2 Points</button>
+          <button id="home-score-3">+3 Points</button>
         </div>
       </div>
     </div>
-  
     <div class="score-log">
       <div class="away-score-log score-log-section"></div>
       <div class="home-score-log score-log-section"></div>
     </div>
   </div>
-  
-
-  <div class="sidebar right-sidebar">
-    <h2>Home Team</h2>
-    <ul>
-      <li>プレイヤー1 - 4: <span class="score" id="home-player-4-score">0</span></li>
-      <li>プレイヤー2 - 5: <span class="score" id="home-player-5-score">0</span></li>
-      <li>プレイヤー3 - 6: <span class="score" id="home-player-6-score">0</span></li>
-      <li>プレイヤー4 - 7: <span class="score" id="home-player-7-score">0</span></li>
-      <li>プレイヤー5 - 8: <span class="score" id="home-player-8-score">0</span></li>
-    </ul>
-  </div>
-
+    
   <script src="countup.js"></script>
+  <script src="addPlayerList.js"></script>
+  <!-- <script src="playerSelection.js"></script> -->
+  <script src="delete.js"></script>
 </body>
 </html>
