@@ -1,41 +1,33 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const awayButtons = document.querySelectorAll('.away .countup');
-  const awayScoreDisplay = document.querySelector('.away .away-count');
-  const awayLog = document.querySelector('.away-score-log');
-  const awayPlayers = document.getElementsByName('away-player');
+  const awayScoreLog = document.querySelector('.away-score-log');
+  const homeScoreLog = document.querySelector('.home-score-log');
 
-  const homeButtons = document.querySelectorAll('.home .countup');
-  const homeScoreDisplay = document.querySelector('.home .home-count');
-  const homeLog = document.querySelector('.home-score-log');
-  const homePlayers = document.getElementsByName('home-player');
+  document.querySelectorAll('.away-players button, .home-players button').forEach(button => {
+    button.addEventListener('click', function() {
+      const team = this.id.includes('away') ? 'away' : 'home';
+      const points = parseInt(this.id.split('-')[2], 10);
+      updateScore(team, points);
+    });
+  });
 
-  function updatePlayerScore(team, playerId, points) {
-    const playerScoreDisplay = document.getElementById(`${team}-player-${playerId}-score`);
-    let currentScore = parseInt(playerScoreDisplay.textContent);
-    playerScoreDisplay.textContent = currentScore + points;
-  }
+  function updateScore(team, points) {
+    const selectedPlayerRadio = document.querySelector(`input[name="${team}-player"]:checked`);
+    if (!selectedPlayerRadio) {
+      alert('Please select a player from the ' + team + ' team.');
+      return;
+    }
+    const playerId = selectedPlayerRadio.id;
+    const playerScoreSpan = document.getElementById(`${playerId}-score`);
+    let currentScore = parseInt(playerScoreSpan.textContent);
+    currentScore += points;
+    playerScoreSpan.textContent = currentScore;
 
-  function updateScore(team, scoreDisplay, logDisplay, players, points) {
-    const selectedPlayer = Array.from(players).find(player => player.checked);
-    if (selectedPlayer) {
-      let currentScore = parseInt(scoreDisplay.textContent);
-      scoreDisplay.textContent = currentScore + points;
-      updatePlayerScore(team, selectedPlayer.value, points);
-      logDisplay.innerHTML += `<div>プレイヤー${selectedPlayer.value}: ${points}点追加, 合計 ${currentScore + points}点</div><hr>`;
+    const logEntry = document.createElement('div');
+    logEntry.textContent = `Player ${playerId.split('-')[2]}: +${points} points, Total: ${currentScore}`;
+    if (team === 'away') {
+      awayScoreLog.appendChild(logEntry);
+    } else {
+      homeScoreLog.appendChild(logEntry);
     }
   }
-
-  awayButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      const points = parseInt(this.textContent);
-      updateScore('away', awayScoreDisplay, awayLog, awayPlayers, points);
-    });
-  });
-
-  homeButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      const points = parseInt(this.textContent);
-      updateScore('home', homeScoreDisplay, homeLog, homePlayers, points);
-    });
-  });
 });

@@ -5,21 +5,16 @@ body {
   text-align: center;
 }
 
-.total-score {
-  display:flex;
-  justify-content: center;
-  gap: 20px;
+.team-selection {
+  display: flex; /* Flexbox を使用して横並びにする */
+  justify-content: space-around; /* 要素間に適切なスペースを設ける */
+  align-items: center; /* 要素を垂直方向の中央に配置 */
 }
 
-.away-count, .home-count {
-  font-size: xx-large;
-  border: solid 3px;
-  margin: 20px auto;
-}
-
-.countup {
-  padding: 10px 20px;
-  font-size: large;
+.away-scoreboard, .home-scoreboard {
+  flex: 1; /* 各要素が利用可能なスペースを均等に使用 */
+  padding: 20px; /* パディングを追加して見た目を整える */
+  box-sizing: border-box; /* パディングを含めたサイズ計算を行う */
 }
 
 .score-log {
@@ -93,4 +88,21 @@ ul {
 
 li {
   margin-bottom: 10px; /* リストアイテム間のマージン */
+}
+
+.player-form {
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.player-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.player-form input,
+.player-form button {
+  margin: 5px 0;
+  padding: 8px;
 }
