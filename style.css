@@ -5,6 +5,12 @@ body {
   text-align: center;
 }
 
+#away-total, #home-total {
+  font-size: xx-large;
+  font-weight: bold;
+  color: coral;
+}
+
 .team-selection {
   display: flex; /* Flexbox を使用して横並びにする */
   justify-content: space-around; /* 要素間に適切なスペースを設ける */
