@@ -3,23 +3,26 @@ document.addEventListener('DOMContentLoaded', function() {
   const homeForm = document.getElementById('homePlayerForm');
   const awayPlayerList = document.getElementById('away-player-list');
   const homePlayerList = document.getElementById('home-player-list');
-  const awayPlayersSelection = document.querySelector('.away-players');
-  const homePlayersSelection = document.querySelector('.home-players');
 
   function addPlayerToList(playerList, playerNameInput, playerNumberInput, team) {
     const name = playerNameInput.value;
     const number = parseInt(playerNumberInput.value, 10);
     const playerId = `${team}-player-${number}`;
 
-    // チェックボックスをつけてセレクションエリアに配置するプレイヤーを選べるようにする
-    // const checkBox = document.createElement('input');
-    // checkBox.type = 'checkbox';
-    // checkBox.name = `${team}-player`;
-    // checkBox.id = `${playerId}`;
-
     const li = document.createElement('li');
     li.id = `${playerId}`; // リストアイテムにIDを設定
-    li.textContent = `${name} - ${number}: `;
+    
+    // チェックボックスをつけてセレクションエリアに配置するプレイヤーを選べるようにする
+    const checkBox = document.createElement('input');
+    checkBox.type = 'checkbox';
+    checkBox.name = `${team}-player`;
+    checkBox.id = `${playerId}`;
+    li.appendChild(checkBox);
+
+    const textSpan = document.createElement('span');
+    textSpan.textContent = `${name} - ${number}: `;
+    li.appendChild(textSpan); // テキストをli要素に追加
+
     const span = document.createElement('span');
     span.className = 'score';
     span.id = `${playerId}-score`;
@@ -34,22 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
     li.appendChild(deleteBtn);
 
     playerList.appendChild(li);
-
-    // セレクションエリアはチェックボックスが実装したらseleection.jsを作り隔離する
-    // Add radio button to the selection area
-    const radioInput = document.createElement('input');
-    radioInput.type = 'radio';
-    radioInput.name = `${team}-player`;
-    radioInput.id = playerId;
-    radioInput.value = number;
-
-    const label = document.createElement('label');
-    label.htmlFor = playerId;
-    label.textContent = `${name} - ${number}`;
-
-    const selectionArea = team === 'away' ? awayPlayersSelection : homePlayersSelection; // if文の略式
-    selectionArea.appendChild(radioInput);
-    selectionArea.appendChild(label);
 
     playerNameInput.value = '';
     playerNumberInput.value = '';

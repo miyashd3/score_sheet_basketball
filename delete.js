@@ -17,8 +17,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // main-contentのラジオボタンとラベルを削除
+        const selectedPlayer = document.querySelector(`div[id="${playerId}"]`);
         const radioInput = document.querySelector(`input[id="${playerId}"]`);
         const label = document.querySelector(`label[for="${playerId}"]`);
+        if (selectedPlayer) {
+          selectedPlayer.remove();
+        }
         if (radioInput) {
           radioInput.remove();
         }

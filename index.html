@@ -12,15 +12,21 @@
     <h2>Away Team</h2>
     <ul id="away-player-list">
       <li id="away-player-1">
-        Away Player 1: <span class="score">0</span>
+        <input type="checkbox" id="away-player-1" name="away-player" value="">
+        <span>Away Player - 1</span>
+        <span class="score" id="away-player-1-score">0</span>
         <button class="delete-btn" id="away-player-1">削除</button>
       </li>
       <li id="away-player-2">
-        Away Player 2: <span class="score">0</span>
+        <input type="checkbox" id="away-player-2" name="away-player" value="">
+        <span>Away Player - 2</span>
+        <span class="score" id="away-player-2-score">0</span>
         <button class="delete-btn" id="away-player-2">削除</button>
       </li>
       <li id="away-player-3">
-        Away Player 3: <span class="score">0</span>
+        <input type="checkbox" id="away-player-3" name="away-player" value="">
+        <span>Away Player - 3</span>
+        <span class="score" id="away-player-3-score">0</span>
         <button class="delete-btn" id="away-player-3">削除</button>
       </li>
     </ul>
@@ -40,15 +46,21 @@
     <h2>Home Team</h2>
     <ul id="home-player-list">
       <li id="home-player-1">
-        Home Player 1: <span class="score">0</span>
+        <input type="checkbox" id="home-player-1" name="home-player" value="">
+        <span>Home Player - 1</span> 
+        <span class="score" id="home-player-1-score">0</span>
         <button class="delete-btn" id="home-player-1">削除</button>
       </li>
       <li id="home-player-2">
-        Home Player 2: <span class="score">0</span>
+        <input type="checkbox" id="home-player-2" name="home-player" value="">
+        <span>Home Player - 2</span>
+        <span class="score" id="home-player-2-score">0</span>
         <button class="delete-btn" id="home-player-2">削除</button>
       </li>
       <li id="home-player-3">
-        Home Player 3: <span class="score">0</span>
+        <input type="checkbox" id="home-player-3" name="home-player" value="">
+        <span>Home Player - 3</span>
+        <span class="score" id="home-player-3-score">0</span>
         <button class="delete-btn" id="home-player-3">削除</button>
       </li>
     </ul>
@@ -71,12 +83,6 @@
         <h2>Away Team</h2>
         <div class="away-total">0</div>
         <div class="away-players">
-          <input type="radio" name="away-player" id="away-player-1" value="">
-          <label for="away-player-1">Away Player 1</label>
-          <input type="radio" name="away-player" id="away-player-2" value="">
-          <label for="away-player-2">Away Player 2</label>
-          <input type="radio" name="away-player" id="away-player-3" value="">
-          <label for="away-player-3">Away Player 3</label>
           <!-- Away team players' radio buttons will be inserted here -->
         </div>
         <div class="away-score-countup">
@@ -90,12 +96,6 @@
         <h2>Home Team</h2>
         <div class="home-total">0</div>
         <div class="home-players">
-          <input type="radio" name="home-player" id="home-player-1" value="">
-          <label for="home-player-1">Home Player 1</label>
-          <input type="radio" name="home-player" id="home-player-2" value="">
-          <label for="home-player-2">Home Player 2</label>
-          <input type="radio" name="home-player" id="home-player-3" value="">
-          <label for="home-player-3">Home Player 3</label>
           <!-- Home team players' radio buttons will be inserted here -->
         </div>
         <div class="home-score-countup">
@@ -113,7 +113,7 @@
     
   <script src="countup.js"></script>
   <script src="addPlayerList.js"></script>
-  <!-- <script src="playerSelection.js"></script> -->
+  <script src="playerSelection.js"></script>
   <script src="delete.js"></script>
 </body>
 </html>
