@@ -1,43 +1,38 @@
 document.addEventListener('DOMContentLoaded', function() {
-  let awayTotal = 0;
-  let homeTotal = 0;
+  const scoreButtons = document.querySelectorAll('.score-btn');
 
-  document.querySelectorAll('.away-score-countup button, .home-score-countup button').forEach(button => {
+  scoreButtons.forEach(button => {
       button.addEventListener('click', function() {
-          const team = this.parentElement.classList.contains('away-score-countup') ? 'away' : 'home';
-          const points = parseInt(this.id.split('-')[2], 10);
-          const selectedPlayerRadio = document.querySelector(`input[type="radio"][name="${team}-player"]:checked`);
-
-          if (!selectedPlayerRadio) {
-              alert(`Please select a player from the ${team} team.`);
-              return;
-          }
-
-          function updateTotal(team, points) {
-              if (team === 'away') {
-                  awayTotal += points;
-                  document.getElementById('away-total').textContent = awayTotal;
-              } else if (team === 'home') {
-                  homeTotal += points;
-                  document.getElementById('home-total').textContent = homeTotal;
-              }
-          }
-
-          updateTotal(team, points);
-
-          const playerScoreSpan = document.getElementById(`${selectedPlayerRadio.id}-score`);
-          if (playerScoreSpan) {
-              let currentScore = parseInt(playerScoreSpan.textContent);
-              currentScore += points;
-              playerScoreSpan.textContent = currentScore;
-
-              const logEntry = document.createElement('div');
-              const playerName = document.querySelector(`label[for="${selectedPlayerRadio.id}"]`).textContent;
-              logEntry.textContent = `${playerName}: +${points} points, Total: ${currentScore}`;
-              document.querySelector(`.${team}-score-log`).appendChild(logEntry);
-          } else {
-              console.error('Score span not found for selected player.');
-          }
+          const team = this.dataset.team; // 'away' または 'home'
+          const points = parseInt(this.dataset.points, 10); // ボタンに設定されたポイントを取得
+          updateScore(team, points);
       });
   });
+
+  function updateScore(team, points) {
+      const selectedPlayerRadio = document.querySelector(`input[name="${team}-player-radio"]:checked`);
+      if (!selectedPlayerRadio) {
+          alert(`Please select a player from the ${team} team.`);
+          return;
+      }
+
+      // 選択されたプレイヤーのスコア要素とプレイヤー名を取得
+      const playerScoreSpan = document.getElementById(`${selectedPlayerRadio.id.replace('-radio', '-score')}`);
+      const playerName = selectedPlayerRadio.parentElement.textContent;
+      let currentScore = parseInt(playerScoreSpan.textContent);
+      currentScore += points;
+      playerScoreSpan.textContent = currentScore;
+
+      // チームの合計スコアを更新
+      const teamTotalElement = document.getElementById(`${team}-total`);
+      let teamTotal = parseInt(teamTotalElement.textContent);
+      teamTotal += points;
+      teamTotalElement.textContent = teamTotal;
+
+      // スコアログにエントリを追加
+      const logEntry = document.createElement('div');
+      logEntry.textContent = `${playerName}: +${points} points, Total: ${teamTotal}`;
+      document.getElementById(`${team}-score-log`).appendChild(logEntry);
+  }
 });
+

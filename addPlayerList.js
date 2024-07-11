@@ -4,51 +4,52 @@ document.addEventListener('DOMContentLoaded', function() {
   const awayPlayerList = document.getElementById('away-player-list');
   const homePlayerList = document.getElementById('home-player-list');
 
-  function addPlayerToList(playerList, playerNameInput, playerNumberInput, team) {
-    const name = playerNameInput.value;
-    const number = parseInt(playerNumberInput.value, 10);
-    const playerId = `${team}-player-${number}`;
-
+  // プレイヤーをリストに追加する関数
+  function addPlayerToList(playerList, playerName, playerNumber, team) {
     const li = document.createElement('li');
-    li.id = `${playerId}`; // リストアイテムにIDを設定
+    li.className = 'player-item';
     
-    // チェックボックスをつけてセレクションエリアに配置するプレイヤーを選べるようにする
     const checkBox = document.createElement('input');
     checkBox.type = 'checkbox';
+    checkBox.id = `${team}-player-${playerNumber}`;
     checkBox.name = `${team}-player`;
-    checkBox.id = `${playerId}`;
-    li.appendChild(checkBox);
-
-    const textSpan = document.createElement('span');
-    textSpan.textContent = `${name} - ${number}: `;
-    li.appendChild(textSpan); // テキストをli要素に追加
-
-    const span = document.createElement('span');
-    span.className = 'score';
-    span.id = `${playerId}-score`;
-    span.textContent = '0';
-    li.appendChild(span);
-
-    // 削除ボタンの作成
+    
+    const nameLabel = document.createElement('label');
+    nameLabel.htmlFor = checkBox.id;
+    nameLabel.textContent = `${playerName} - ${playerNumber}`;
+    
+    const scoreSpan = document.createElement('span');
+    scoreSpan.className = 'score';
+    scoreSpan.id = `${team}-player-${playerNumber}-score`;
+    scoreSpan.textContent = '0';
+    
     const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = '削除';
     deleteBtn.className = 'delete-btn';
-    deleteBtn.id = `${playerId}`; // 削除ボタンにIDを設定
+    deleteBtn.textContent = '削除';
+    
+    li.appendChild(checkBox);
+    li.appendChild(nameLabel);
+    li.appendChild(scoreSpan);
     li.appendChild(deleteBtn);
-
+    
     playerList.appendChild(li);
-
-    playerNameInput.value = '';
-    playerNumberInput.value = '';
   }
 
+  // Away フォームの送信イベントハンドラー
   awayForm.addEventListener('submit', function(event) {
     event.preventDefault();
-    addPlayerToList(awayPlayerList, document.getElementById('awayPlayerName'), document.getElementById('awayPlayerNumber'), 'away');
+    const playerName = document.getElementById('awayPlayerName').value;
+    const playerNumber = document.getElementById('awayPlayerNumber').value;
+    addPlayerToList(awayPlayerList, playerName, playerNumber, 'away');
+    this.reset(); // フォームをリセット
   });
 
+  // Home フォームの送信イベントハンドラー
   homeForm.addEventListener('submit', function(event) {
     event.preventDefault();
-    addPlayerToList(homePlayerList, document.getElementById('homePlayerName'), document.getElementById('homePlayerNumber'), 'home');
+    const playerName = document.getElementById('homePlayerName').value;
+    const playerNumber = document.getElementById('homePlayerNumber').value;
+    addPlayerToList(homePlayerList, playerName, playerNumber, 'home');
+    this.reset(); // フォームをリセット
   });
 });
