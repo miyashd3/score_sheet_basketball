@@ -1,33 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const playerLists = document.querySelectorAll('ul[id$="-player-list"]'); // IDが "-player-list" で終わるすべてのul要素を取得
+  const playerLists = document.querySelectorAll('.player-list');
 
   playerLists.forEach(playerList => {
     playerList.addEventListener('click', function(event) {
       if (event.target.classList.contains('delete-btn')) {
-        const playerId = event.target.id;
-        const playerLi = document.getElementById(playerId);
+        const playerId = event.target.previousElementSibling.id; // "score" の span の ID
+        const playerNumber = playerId.split('-')[2]; // "away-player-1-score" の "1" を取得
+        const team = playerId.split('-')[0]; // "away-player-1-score" の "away" を取得
+
+        // プレイヤーリストから削除
+        const playerLi = event.target.closest('li');
         if (playerLi) {
-          playerLi.remove(); // プレイヤーリストから削除
+          playerLi.remove();
         }
 
-        // スコアボードからも削除
-        const scoreEntries = document.querySelectorAll(`.score-log div[id="${playerId}"]`);
-        scoreEntries.forEach(entry => {
-          entry.remove();
-        });
-
-        // main-contentのラジオボタンとラベルを削除
-        const selectedPlayer = document.querySelector(`div[id="${playerId}"]`);
-        const radioInput = document.querySelector(`input[id="${playerId}"]`);
-        const label = document.querySelector(`label[for="${playerId}"]`);
-        if (selectedPlayer) {
-          selectedPlayer.remove();
-        }
-        if (radioInput) {
-          radioInput.remove();
-        }
-        if (label) {
-          label.remove();
+        // 選択エリアの対応するdivも削除
+        const playerDivId = `${team}-player-${playerNumber}-div`;
+        const playerDiv = document.getElementById(playerDivId);
+        if (playerDiv) {
+          playerDiv.remove();
         }
       }
     });

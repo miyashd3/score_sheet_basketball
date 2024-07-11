@@ -1,51 +1,52 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Away teamとHome teamのプレイヤーリストの取得
   const awayPlayerList = document.getElementById('away-player-list');
   const homePlayerList = document.getElementById('home-player-list');
 
-  // プレイヤーが選択（チェックボックスが変更）されたときの処理を追加
-  awayPlayerList.addEventListener('change', function(event) {
-    handlePlayerCheckboxChange(event, 'away');
-  });
+  // プレイヤー選択を処理する関数
+  function handlePlayerSelection(event, team) {
+    const checkbox = event.target;
+    const playerNumber = checkbox.id.split('-')[2]; // "away-player-1" の "1" を取得
+    const playerName = checkbox.nextSibling.textContent;
+    const playerDivId = `${team}-player-${playerNumber}-div`;
 
-  homePlayerList.addEventListener('change', function(event) {
-    handlePlayerCheckboxChange(event, 'home');
-  });
+    // チェックされた場合
+    if (checkbox.checked) {
+      const playerDiv = document.createElement('div');
+      playerDiv.id = playerDivId;
+      playerDiv.className = 'player-div';
 
-  // プレイヤーの選択状態を処理する関数
-  function handlePlayerCheckboxChange(event, team) {
-    const target = event.target;
-    if (target.type === 'checkbox') {
-      const playerName = target.parentElement.querySelector('span').textContent;
-      const playerId = target.id;
-      const selectionArea = document.querySelector(`.${team}-players`);
+      const radio = document.createElement('input');
+      radio.type = 'radio';
+      radio.name = `${team}-player-radio`;
+      radio.id = `${team}-player-${playerNumber}-radio`;
 
-      if (target.checked) {
-        // チェックされたら、新しい選択要素を作成して追加
-        const selectedPlayer = document.createElement('div');
-        selectedPlayer.id = playerId;
-        selectedPlayer.name = `${team}-player`;
+      const label = document.createElement('label');
+      label.htmlFor = radio.id;
+      label.textContent = `${playerName}`;
 
-        const radioInput = document.createElement('input');
-        radioInput.type = 'radio';
-        radioInput.name = `${team}-player`;
-        radioInput.id = playerId;
-        selectedPlayer.appendChild(radioInput);
+      playerDiv.appendChild(radio);
+      playerDiv.appendChild(label);
 
-        const label = document.createElement('label');
-        label.htmlFor = playerId;
-        label.textContent = `${playerName}`;
-        selectedPlayer.appendChild(label);
-
-        selectionArea.appendChild(selectedPlayer);
-      } else {
-        // チェックが外れたら、main-contentの対応する${team}-playersから要素を削除
-        const existingPlayer = selectionArea.querySelector(`div[id="${playerId}"]`);
-        if (existingPlayer) {
-          existingPlayer.remove();
-        }
+      document.getElementById(`${team}-players`).appendChild(playerDiv);
+    } else {
+      // チェックが外れた場合
+      const existingDiv = document.getElementById(playerDivId);
+      if (existingDiv) {
+        existingDiv.remove();
       }
     }
   }
-});
 
+  // Away と Home のプレイヤーリストにイベントリスナーを設定
+  awayPlayerList.addEventListener('change', function(event) {
+    if (event.target.type === 'checkbox') {
+      handlePlayerSelection(event, 'away');
+    }
+  });
+
+  homePlayerList.addEventListener('change', function(event) {
+    if (event.target.type === 'checkbox') {
+      handlePlayerSelection(event, 'home');
+    }
+  });
+});

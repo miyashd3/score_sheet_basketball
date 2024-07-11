@@ -10,27 +10,9 @@
   <!-- Away チームのプレイヤーリスト -->
   <div class="sidebar left-sidebar">
     <h2>Away Team</h2>
-    <ul id="away-player-list">
-      <li id="away-player-1">
-        <input type="checkbox" id="away-player-1" name="away-player" value="">
-        <span>Away Player - 1</span>
-        <span class="score" id="away-player-1-score">0</span>
-        <button class="delete-btn" id="away-player-1">削除</button>
-      </li>
-      <li id="away-player-2">
-        <input type="checkbox" id="away-player-2" name="away-player" value="">
-        <span>Away Player - 2</span>
-        <span class="score" id="away-player-2-score">0</span>
-        <button class="delete-btn" id="away-player-2">削除</button>
-      </li>
-      <li id="away-player-3">
-        <input type="checkbox" id="away-player-3" name="away-player" value="">
-        <span>Away Player - 3</span>
-        <span class="score" id="away-player-3-score">0</span>
-        <button class="delete-btn" id="away-player-3">削除</button>
-      </li>
+    <ul class="player-list" id="away-player-list">
+      <!-- プレイヤーリストは動的に生成されるため、ここには初期項目は不要 -->
     </ul>
-    <!-- Away チームのプレイヤー追加フォーム -->
     <div class="player-form away-form">
       <h3>Away チーム プレイヤー追加</h3>
       <form id="awayPlayerForm">
@@ -44,27 +26,9 @@
   <!-- Home チームのプレイヤーリスト -->
   <div class="sidebar right-sidebar">
     <h2>Home Team</h2>
-    <ul id="home-player-list">
-      <li id="home-player-1">
-        <input type="checkbox" id="home-player-1" name="home-player" value="">
-        <span>Home Player - 1</span> 
-        <span class="score" id="home-player-1-score">0</span>
-        <button class="delete-btn" id="home-player-1">削除</button>
-      </li>
-      <li id="home-player-2">
-        <input type="checkbox" id="home-player-2" name="home-player" value="">
-        <span>Home Player - 2</span>
-        <span class="score" id="home-player-2-score">0</span>
-        <button class="delete-btn" id="home-player-2">削除</button>
-      </li>
-      <li id="home-player-3">
-        <input type="checkbox" id="home-player-3" name="home-player" value="">
-        <span>Home Player - 3</span>
-        <span class="score" id="home-player-3-score">0</span>
-        <button class="delete-btn" id="home-player-3">削除</button>
-      </li>
+    <ul class="player-list" id="home-player-list">
+      <!-- プレイヤーリストは動的に生成されるため、ここには初期項目は不要 -->
     </ul>
-    <!-- Home チームのプレイヤー追加フォーム -->
     <div class="player-form home-form">
       <h3>Home チーム プレイヤー追加</h3>
       <form id="homePlayerForm">
@@ -74,40 +38,35 @@
       </form>
     </div>
   </div>
-    
-
+  
   <div class="main-content">
     <h1>Scoreboard</h1>
     <div class="team-selection">
-      <div class="away-scoreboard">
+      <div class="scoreboard away-scoreboard">
         <h2>Away Team</h2>
-        <div id="away-total">0</div>
-        <div class="away-players">
-          <!-- Away team players' radio buttons will be inserted here -->
-        </div>
-        <div class="away-score-countup">
-          <button id="away-score-1">+1 Point</button>
-          <button id="away-score-2">+2 Points</button>
-          <button id="away-score-3">+3 Points</button>
+        <div class="total-score" id="away-total">0</div>
+        <div class="players" id="away-players"></div>
+        <div class="score-countup">
+          <button class="score-btn" data-team="away" data-points="1">+1 Point</button>
+          <button class="score-btn" data-team="away" data-points="2">+2 Points</button>
+          <button class="score-btn" data-team="away" data-points="3">+3 Points</button>
         </div>
       </div>
 
-      <div class="home-scoreboard">
+      <div class="scoreboard home-scoreboard">
         <h2>Home Team</h2>
-        <div id="home-total">0</div>
-        <div class="home-players">
-          <!-- Home team players' radio buttons will be inserted here -->
-        </div>
-        <div class="home-score-countup">
-          <button id="home-score-1">+1 Point</button>
-          <button id="home-score-2">+2 Points</button>
-          <button id="home-score-3">+3 Points</button>
+        <div class="total-score" id="home-total">0</div>
+        <div class="players" id="home-players"></div>
+        <div class="score-countup">
+          <button class="score-btn" data-team="home" data-points="1">+1 Point</button>
+          <button class="score-btn" data-team="home" data-points="2">+2 Points</button>
+          <button class="score-btn" data-team="home" data-points="3">+3 Points</button>
         </div>
       </div>
     </div>
     <div class="score-log">
-      <div class="away-score-log score-log-section"></div>
-      <div class="home-score-log score-log-section"></div>
+      <div class="score-log-section" id="away-score-log"></div>
+      <div class="score-log-section" id="home-score-log"></div>
     </div>
   </div>
     
