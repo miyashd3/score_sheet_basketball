@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
   <!-- Away チームのプレイヤーリスト -->
-  <div class="sidebar left-sidebar">
+  <div class="sidebar left-sidebar" id="away-menu">
     <h2>Away Team</h2>
     <ul class="player-list" id="away-player-list">
       <!-- プレイヤーリストは動的に生成されるため、ここには初期項目は不要 -->
@@ -21,10 +22,11 @@
         <button type="submit">追加</button>
       </form>
     </div>
+    <button class="close-button">閉じる</button>
   </div>
 
   <!-- Home チームのプレイヤーリスト -->
-  <div class="sidebar right-sidebar">
+  <div class="sidebar right-sidebar" id="home-menu">
     <h2>Home Team</h2>
     <ul class="player-list" id="home-player-list">
       <!-- プレイヤーリストは動的に生成されるため、ここには初期項目は不要 -->
@@ -37,6 +39,7 @@
         <button type="submit">追加</button>
       </form>
     </div>
+    <button class="close-button">閉じる</button>
   </div>
   
   <div class="main-content">
@@ -44,6 +47,10 @@
     <div class="team-selection">
       <div class="scoreboard away-scoreboard">
         <h2>Away Team</h2>
+        <!-- Away チーム用のハンバーガーメニューボタン -->
+        <div class="hamburger-menu">
+          <button class="hamburger-button" data-target="away-menu">&#9776; Player</button>
+        </div>
         <div class="total-score" id="away-total">0</div>
         <div class="players" id="away-players"></div>
         <div class="score-countup">
@@ -55,6 +62,10 @@
 
       <div class="scoreboard home-scoreboard">
         <h2>Home Team</h2>
+        <!-- Home チーム用のハンバーガーメニューボタン -->
+        <div class="hamburger-menu">
+          <button class="hamburger-button" data-target="home-menu">&#9776; Player</button>
+        </div>
         <div class="total-score" id="home-total">0</div>
         <div class="players" id="home-players"></div>
         <div class="score-countup">
@@ -70,6 +81,7 @@
     </div>
   </div>
     
+  <script src="teamMenu.js"></script>
   <script src="countup.js"></script>
   <script src="addPlayerList.js"></script>
   <script src="playerSelection.js"></script>
