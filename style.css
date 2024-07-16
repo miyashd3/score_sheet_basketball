@@ -5,6 +5,92 @@ body {
   text-align: center;
 }
 
+/* ハンバーガーメニューのスタイリング */
+.hamburger-menu button {
+  display: none; /* デフォルトでは非表示 */
+  font-size: 24px; /* アイコンサイズ */
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin:0 auto;
+  border: #555 1px solid;
+}
+
+/* 小さなデバイスでの表示設定 */
+@media (max-width: 768px) {
+  .hamburger-menu button {
+    display: block; /* ボタンを表示 */
+  }
+  
+  .sidebar {
+    width: 100%; /* フル幅 */
+    display: none; /* デフォルトでは非表示 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white; /* 背景色 */
+    z-index: 1000; /* 上に表示 */
+  }
+}
+
+.close-button {
+  position: absolute;
+  top: 10px; /* 上端からの距離 */
+  right: 10px; /* 右端からの距離 */
+  padding: 5px 10px;
+  background-color: #f44336; /* 赤色の背景 */
+  color: white; /* 白文字 */
+  border: none;
+  cursor: pointer; /* ポインターをカーソルに */
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    width: 20%; /* サイドバーの幅 */
+    background-color: #f4f4f4; /* 背景色 */
+    padding: 20px; /* パディング */
+    box-sizing: border-box; /* ボックスサイズの計算方法 */
+  }
+
+  .left-sidebar {
+    order: 1; /* 左側に配置 */
+  }
+
+  .right-sidebar {
+    order: 3; /* 右側に配置 */
+  }
+
+  .close-button {
+    display: none;
+  }
+}
+
+ul {
+  list-style: none; /* リストスタイルをなしに */
+  padding: 0; /* パディングを0に */
+}
+
+li {
+  margin-bottom: 10px; /* リストアイテム間のマージン */
+}
+
+.player-form {
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.player-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.player-form input,
+.player-form button {
+  margin: 5px 0;
+  padding: 8px;
+}
+
 #away-total, #home-total {
   font-size: xx-large;
   font-weight: bold;
@@ -21,19 +107,6 @@ body {
   flex: 1; /* 各要素が利用可能なスペースを均等に使用 */
   padding: 20px; /* パディングを追加して見た目を整える */
   box-sizing: border-box; /* パディングを含めたサイズ計算を行う */
-}
-
-.score-log {
-  display: flex;
-  justify-content: space-around; /* ログを左右に均等に配置 */
-}
-
-.score-log-section {
-  width: 45%; /* 各ログの幅を設定 */
-  border: 1px solid #ccc; /* ログの境界を明確にする */
-  padding: 10px;
-  overflow-y: auto; /* 必要に応じてスクロールバーを表示 */
-  height: 500px; /* ログの高さを設定 */
 }
 
 /* ラジオボタンのカスタムスタイル */
@@ -66,49 +139,21 @@ label {
   margin-bottom: 10px; /* 下部のマージン */
 }
 
-.sidebar {
-  width: 20%; /* サイドバーの幅 */
-  background-color: #f4f4f4; /* 背景色 */
-  padding: 20px; /* パディング */
-  box-sizing: border-box; /* ボックスサイズの計算方法 */
-}
-
-.left-sidebar {
-  order: 1; /* 左側に配置 */
-}
-
 .main-content {
   flex-grow: 1; /* 残りのスペースを埋める */
   order: 2; /* 中央に配置 */
   padding: 20px; /* パディング */
 }
 
-.right-sidebar {
-  order: 3; /* 右側に配置 */
-}
-
-ul {
-  list-style: none; /* リストスタイルをなしに */
-  padding: 0; /* パディングを0に */
-}
-
-li {
-  margin-bottom: 10px; /* リストアイテム間のマージン */
-}
-
-.player-form {
-  margin: 20px;
-  padding: 10px;
-  border: 1px solid #ccc;
-}
-
-.player-form form {
+.score-log {
   display: flex;
-  flex-direction: column;
+  justify-content: space-around; /* ログを左右に均等に配置 */
 }
 
-.player-form input,
-.player-form button {
-  margin: 5px 0;
-  padding: 8px;
+.score-log-section {
+  width: 45%; /* 各ログの幅を設定 */
+  border: 1px solid #ccc; /* ログの境界を明確にする */
+  padding: 10px;
+  overflow-y: auto; /* 必要に応じてスクロールバーを表示 */
+  height: 500px; /* ログの高さを設定 */
 }
