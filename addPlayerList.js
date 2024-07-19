@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const nameLabel = document.createElement('label');
     nameLabel.htmlFor = checkBox.id;
-    nameLabel.textContent = `${playerName} - ${playerNumber}`;
+    nameLabel.textContent = `${playerName} #${playerNumber}`;
     
     const scoreSpan = document.createElement('span');
     scoreSpan.className = 'score';

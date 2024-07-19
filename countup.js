@@ -30,9 +30,13 @@ document.addEventListener('DOMContentLoaded', function() {
       teamTotalElement.textContent = teamTotal;
 
       // スコアログにエントリを追加
-      const logEntry = document.createElement('div');
-      logEntry.textContent = `${playerName}: +${points} points, Total: ${teamTotal}`;
-      document.getElementById(`${team}-score-log`).appendChild(logEntry);
+      const tbody = document.querySelector(`#${team}-score-log tbody`);
+      const row = tbody.insertRow();
+      const cell1 = row.insertCell(0);
+      const cell2 = row.insertCell(1);
+      const cell3 = row.insertCell(2);
+      cell1.textContent = playerName;
+      cell2.innerHTML = `<span style="color: blue;">+${points}</span>`;
+      cell3.innerHTML = `<span style="color: coral;">${teamTotal}</span>`;
   }
 });
-
