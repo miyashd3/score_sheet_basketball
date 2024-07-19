@@ -74,6 +74,11 @@ li {
   margin-bottom: 10px; /* リストアイテム間のマージン */
 }
 
+.score {
+  color: coral;
+  font-weight: bold;
+}
+
 .player-form {
   margin: 20px;
   padding: 10px;
@@ -117,7 +122,7 @@ input[type="radio"] {
   border: 2px solid #555; /* カスタムボーダー */
   border-radius: 50%; /* 円形にする */
   margin-right: 8px; /* ラベルとの間隔 */
-  vertical-align: middle; /* ラベルとの垂直位置を揃える */
+  vertical-align: sub; /* ラベルとの垂直位置を揃える */
 }
 
 input[type="radio"]:checked {
@@ -147,13 +152,27 @@ label {
 
 .score-log {
   display: flex;
-  justify-content: space-around; /* ログを左右に均等に配置 */
+  /* justify-content: space-around; ログを左右に均等に配置 */
 }
 
-.score-log-section {
-  width: 45%; /* 各ログの幅を設定 */
-  border: 1px solid #ccc; /* ログの境界を明確にする */
-  padding: 10px;
-  overflow-y: auto; /* 必要に応じてスクロールバーを表示 */
-  height: 500px; /* ログの高さを設定 */
+.score-log table {
+  width: 50%;
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(140 140 140);
+  font-family: sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+th,
+td {
+  border: 1px solid rgb(160 160 160);
+  padding: 8px 10px;
+}
+
+tbody > tr:nth-of-type(even) {
+  background-color: rgb(237 238 242);
 }
