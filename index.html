@@ -54,9 +54,16 @@
         <div class="total-score" id="away-total">0</div>
         <div class="players" id="away-players"></div>
         <div class="score-countup">
-          <button class="score-btn" data-team="away" data-points="1">+1 Point</button>
-          <button class="score-btn" data-team="away" data-points="2">+2 Points</button>
-          <button class="score-btn" data-team="away" data-points="3">+3 Points</button>
+          <h3>Success shot</h3>
+          <button class="score-btn" data-team="away" data-points="1" data-action="success" data-type="ft">+1 Point</button>
+          <button class="score-btn" data-team="away" data-points="2" data-action="success" data-type="fg">+2 Points</button>
+          <button class="score-btn" data-team="away" data-points="3" data-action="success" data-type="three">+3 Points</button>
+        </div>
+        <div class="fail-shots-number">
+          <h3>Failed shot</h3>
+          <button class="fail-shot" data-team="away" data-action="fail"  data-type="ft">FT</button>
+          <button class="fail-shot" data-team="away" data-action="fail" data-type="fg">FG</button>
+          <button class="fail-shot" data-team="away" data-action="fail" data-type="three">3P</button>
         </div>
       </div>
 
@@ -69,9 +76,16 @@
         <div class="total-score" id="home-total">0</div>
         <div class="players" id="home-players"></div>
         <div class="score-countup">
-          <button class="score-btn" data-team="home" data-points="1">+1 Point</button>
-          <button class="score-btn" data-team="home" data-points="2">+2 Points</button>
-          <button class="score-btn" data-team="home" data-points="3">+3 Points</button>
+          <h3>Success shot</h3>
+          <button class="score-btn" data-team="home" data-points="1" data-action="success" data-type="ft">+1 Point</button>
+          <button class="score-btn" data-team="home" data-points="2" data-action="success" data-type="fg">+2 Points</button>
+          <button class="score-btn" data-team="home" data-points="3" data-action="success" data-type="three">+3 Points</button>
+        </div>
+        <div class="fail-shots-number">
+          <h3>Failed shot</h3>
+          <button class="fail-shot" data-team="home" data-action="fail" data-type="ft">FT</button>
+          <button class="fail-shot" data-team="home" data-action="fail" data-type="fg">FG</button>
+          <button class="fail-shot" data-team="home" data-action="fail" data-type="three">3P</button>
         </div>
       </div>
     </div>
@@ -108,5 +122,6 @@
   <script src="addPlayerList.js"></script>
   <script src="playerSelection.js"></script>
   <script src="delete.js"></script>
+  <script src="shotCounter.js"></script>
 </body>
 </html>
