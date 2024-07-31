@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
       radio.type = 'radio';
       radio.name = `${team}-player-radio`;
       radio.id = `${team}-player-${playerNumber}-radio`;
+      radio.value = `${playerNumber}`;
 
       const label = document.createElement('label');
       label.htmlFor = radio.id;
